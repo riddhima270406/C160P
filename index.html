@@ -1,15 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
   <head>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <meta charset="utf-8" />
+    <title>My Locality</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+    <script src="js/Tour.js"></script>
+    <script src="js/CursorEvents.js"></script>
   </head>
   <body>
-    <a-scene>
-      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-      <a-sky color="#ECECEC"></a-sky>
+    <a-scene id="main-scene">
+      <a-sky
+        id="main-container"
+        radius="5000"
+        src="./assets/background.jpg"
+        rotation="0 -90 0"
+      ></a-sky>
+
+      <!-- Places Container -->
+      <a-entity id="places-container" cursor-listener tour></a-entity>
+
+      <!-- CAMERA -->
+      <a-camera id="camera" wasd-controls="enabled:false;">
+        <!-- App Title -->
+        <a-entity
+          id="app-title"
+          position="-0.08 0.73 -1"
+          text="font: exo2bold; align: center; width: 1.5; color: #e91e63; value: MY LOCALITY"
+        >
+        </a-entity>
+
+        <!-- CURSOR -->
+        <a-entity
+          id="camera-cursor"
+          cursor
+          position="0 0 -1"
+          geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+          material="color: #283593; shader: flat"
+        >
+        </a-entity>
+      </a-camera>
     </a-scene>
   </body>
 </html>
